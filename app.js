@@ -47,7 +47,6 @@ app.post("/login", async (req, res) => {
     bcrypt.compare(req.body.password, user.password, (err, result) => {
       if (result === true) {
         let token = jwt.sign({ email: user.email }, "ankurit");
-        console.log(token);
         res.cookie("token", token);
         res.send(user.username);
       } else {
